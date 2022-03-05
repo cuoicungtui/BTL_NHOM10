@@ -1,8 +1,8 @@
 <?php
 
-class ProductModel extends BaseModel
+class AdminModel extends BaseModel
 { 
-    const TABLE = "Product";
+    const TABLE = "admin";
 
     public function getAll($select = ['*'], $orderby = [],$limit= 200 ){
 

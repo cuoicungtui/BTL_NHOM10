@@ -8,7 +8,7 @@ class BaseModel extends Database
         $this->connect =  $this->connect();
     }
 
-    public function all($table,$select = ['*'],$orderby = [],$limit= 15){
+    public function all($table,$select = ['*'],$orderby = [],$limit= 200){
 
         $column = implode(',',$select);
 
@@ -18,7 +18,7 @@ class BaseModel extends Database
             $sql = "SELECT ${column} FROM ${table} ORDER BY ${oderstring} LIMIT ${limit}";
         }else 
 
-            $sql = "SELECT ${column} FROM ${table} LIMIT = ${limit}";
+            $sql = "SELECT ${column} FROM ${table} LIMIT ${limit}";
 
         $query = $this->_query($sql);
         $data = [];
@@ -44,7 +44,12 @@ class BaseModel extends Database
 
         $sql = "SELECT ${column} FROM ${table} WHERE ${conditionsetString}";
 
-        return $this->_query($sql);
+        $query = $this->_query($sql);
+        $data = [];
+        While($row = mysqli_fetch_assoc($query)){
+           array_push($data,$row);
+        }
+        return $data;
   
 
     }
@@ -101,7 +106,7 @@ class BaseModel extends Database
 
         $sql = "DELETE FROM ${table}  WHERE $conditionsetString ";
 
-        $this->_query($sql);
+        return $this->_query($sql);
 
     }
 

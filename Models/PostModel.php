@@ -1,8 +1,8 @@
 <?php
 
-class ProductModel extends BaseModel
+class PostModel extends BaseModel
 { 
-    const TABLE = "Product";
+    const TABLE = "post";
 
     public function getAll($select = ['*'], $orderby = [],$limit= 200 ){
 

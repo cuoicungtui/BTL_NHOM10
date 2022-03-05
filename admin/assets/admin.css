@@ -1,0 +1,32 @@
+.img_admin_login{
+    padding-top:20px;
+}
+.my-form{
+    display: flex;
+    justify-content:space-evenly;
+    width: 100%;
+}
+.Form_conten{
+    display: flex;
+    justify-content: space-evenly
+}
+.form_labe{
+    width: 80px;
+}
+
+.form_input{
+    width: 100%;
+}
+body{
+
+}
+.my-container{
+    width: 350px;
+    box-sizing: border-box;
+    background-color: rgb(192, 39, 39);
+    margin-top: 6%;
+}
+.btn_login{
+    display: flex;
+    justify-content:space-evenly;
+}
