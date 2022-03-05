@@ -11,7 +11,7 @@ include_once "Views/admin/header.php";
 
     </div>
 
-    <a class="btn btn-dark mt-5" href="/BTL_NHOM10/Views/admin/accoutAddView.php" role="button">Add post</a>
+    <a class="btn btn-dark mt-5" href="/BTL_NHOM10/?controller=post&acction=addPostView" role="button">Add post</a>
     <thead>
 
         <tr>
@@ -38,8 +38,8 @@ include_once "Views/admin/header.php";
                 <td><?php echo $value['paragraph']  ?></td>
                 <td><?php echo $value['date'] ?></td>
                 <td> <a href="/BTL_NHOM10/&id=<?php echo $value['id'] ?>"> <i class="bi bi-pencil-square"></i> </a> </td>
-                <td><a href="/BTL_NHOM10/&id=<?php echo $value['id'] ?>"><i class="bi bi-trash-fill"></i></a></td>
-                <td> <a href="/BTL_NHOM10/?&id=<?php echo $value['id'] ?>"> <i class="bi bi-pencil-square"></i> </a> </td>
+                <td><a href="/BTL_NHOM10/?controller=post&acction=deletePost&id=<?php echo $value['id'] ?>"><i class="bi bi-trash-fill"></i></a></td>
+                <td> <a href="/BTL_NHOM10/?controller=conten&acction=loadViewConten&id=<?php echo $value['id'] ?>"> <i class="bi bi-three-dots-vertical"></i> </a> </td>
             </tr>
 
         <?php

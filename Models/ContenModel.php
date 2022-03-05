@@ -1,8 +1,8 @@
 <?php
 
-class PostModel extends BaseModel
+class ContenModel extends BaseModel
 { 
-    const TABLE = "post";
+    const TABLE = "conten";
 
     public function getAll($select = ['*'], $orderby = [],$limit= 200 ){
 
@@ -17,6 +17,12 @@ class PostModel extends BaseModel
         
     }
 
+    public function findDataOder($select = ['*'] ,$orderby = [],$condition = [])
+    {
+
+        return $this->findOder(self::TABLE,$select,$orderby,$condition);
+        
+    }
 
     public function insert($data = []){
 

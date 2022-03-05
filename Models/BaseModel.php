@@ -54,6 +54,39 @@ class BaseModel extends Database
 
     }
 
+    public function  findOder($table,$select = ['*'],$orderby = [] ,$condition = []){
+
+        $conditionset = [];
+
+        foreach($condition as $key => $value){
+            array_push($conditionset,"${key}"."= '".$value ."'");
+        }
+
+        $conditionsetString = implode(' AND ',$conditionset);
+
+        $column = implode(',',$select);
+        $oderstring = implode(' ',$orderby);
+
+        if($oderstring){
+
+            $sql = "SELECT ${column} FROM ${table} WHERE ${conditionsetString} ORDER BY ${oderstring}";
+
+        }else 
+
+            $sql = "SELECT ${column} FROM ${table} WHERE ${conditionsetString}";
+
+        $query = $this->_query($sql);
+        $data = [];
+        While($row = mysqli_fetch_assoc($query)){
+           array_push($data,$row);
+        }
+        return $data;
+        // return $sql;
+
+    }
+
+
+
     public function add($table,$data = []){
         $columns = implode( ',',array_keys($data));
 
