@@ -72,7 +72,8 @@ include_once "header.php";
                                                 alert("successful update");
 
                                                 location.href = '/BTL_NHOM10/?controller=admin&acction=loadViewAccout'
-                                            }                               
+                                            }  
+                                                                         
                                         }
                                     });
                                    
