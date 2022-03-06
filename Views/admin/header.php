@@ -40,11 +40,11 @@ session_start();
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Vaccin
+                                Vaccine
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Post</a></li>
-                                <li><a class="dropdown-item" href="#">conten</a></li>
+                                <li><a class="dropdown-item" href="#">Content</a></li>
                                 <!-- <li>
                                     <hr class="dropdown-divider">
                                 </li> -->
@@ -52,7 +52,7 @@ session_start();
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="/BTL_NHOM10/?controller=Admin&acction=logout">logout</a>
+                            <a class="nav-link " href="/BTL_NHOM10/?controller=Admin&acction=logout">Logout</a>
                         </li>
                     </ul>
                   
