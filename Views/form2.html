@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Khai báo y tế</title>
+  <title>Đăng ký tiêm</title>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -56,13 +56,27 @@
   </nav>
 
   <div class="container">
-    <form>
-      <div class="row">
-        <div class="title">
-          <h3>THÔNG TIN KHAI BÁO Y TẾ</h3>
-          <span>( PHÒNG CHỐNG DỊCH COVID-19 )</span>
-          <p>Khuyến cáo: Khai báo thông tin sai là vi phạm pháp luật Việt Nam và có thể xử lý hình sự</p>
+      <form>
+        <div class="row">
+          <div class="col">
+            <div class="title">
+              <h3>ĐĂNG KÝ TIÊM COVID-19</h3>
+              <span>( PHÒNG CHỐNG DỊCH COVID-19 )</span>
+              <p>Khuyến cáo: Khai báo thông tin sai là vi phạm pháp luật Việt Nam và có thể xử lý hình sự</p>
+            </div>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-4">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Đăng ký tiêm mũi thứ</option>
+              <option value="1">Mũi tiêm thứ nhất</option>
+              <option value="2">Mũi tiêm thứ hai</option>
+              <option value="3">Mũi tiêm thứ ba</option>
+            </select>
+          </div>
+        </div>
+      <div class="row mt-3">
         <div class="col-lg-6">
           Họ và tên
           <input type="text" id="name" class="form-control" required placeholder="Họ và tên">
@@ -92,10 +106,6 @@
               <input class="form-check-input" type="radio" name="gioitinh" id="nu" value="nu">
               <label class="form-check-label" for="nu">Nữ</label>
             </div>
-            <!-- <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="gioitinh" id="khac" value="khac" >
-              <label class="form-check-label" for="khac">Khác</label>
-            </div> -->
           </div>
         </div>
         <div class="col-sm-6 col-lg-4">
@@ -114,8 +124,8 @@
           <span></span>
         </div>
         <div class="col-sm-6 col-lg-4">
-          Quận/huyện
-          <input type="text" class="form-control" id="huyen" required placeholder="Quận/huyện">
+          Quận/Huyện
+          <input type="text" class="form-control" id="huyen" required placeholder="Quận/Huyện">
           <span></span>
         </div>
         <div class="col-sm-6 col-lg-4">
@@ -126,9 +136,14 @@
       </div>
   
       <div class="row mt-3">
-        <div class="col">
-          Số nhà, phố, tổ dân phố\thôn\xóm
-          <input type="text" class="form-control" id="sonha" required placeholder="Số nhà, phố, tổ dân phố\thôn\xóm">
+        <div class="col-6">
+          Địa chỉ hiện tại
+          <input type="text" class="form-control" id="sonha" required placeholder="Địa chỉ hiện tại">
+          <span></span>
+        </div>
+        <div class="col-6">
+          Số thẻ BHYT
+          <input type="text" class="form-control" id="bhyt" required placeholder="Số thẻ BHYT">
           <span></span>
         </div>
       </div>
@@ -147,104 +162,26 @@
       </div>
   
       <div class="row mt-3">
-        <div class="col">
-          <span class="title-bold">Trong vòng 14 ngày qua, Anh/Chị có đến tỉnh/thành phố, quốc gia/vùng lãnh thổ nào (Có thể đi qua nhiều nơi)</span>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="checkYN1" id="" value="option1" checked>
-            <label class="form-check-label" for="inlineRadio1">Không</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="checkYN1" id="" value="option2">
-            <label class="form-check-label" for="inlineRadio2">Có</label>
-          </div>
+        <div class="col-6">
+          Tiểu sử bệnh nền
+          <input type="text" class="form-control" id="benhnen" required placeholder="Bệnh nền">
+          <span></span>
         </div>
       </div>
-  
+
       <div class="row mt-3">
-        <div class="col">
-          <span class="title-bold">Trong vòng 14 ngày qua, Anh/Chị có thấy xuất hiện ít nhất 1 trong các dấu hiệu: sốt, ho, khó thở, viêm phổi, đau họng, mệt mỏi không?</span>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="checkYN2" id="" value="option1" checked>
-            <label class="form-check-label" for="inlineRadio1">Không</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="checkYN2" id="" value="option2">
-            <label class="form-check-label" for="inlineRadio2">Có</label>
-          </div>
+        <div class="col-lg-6">
+          Ngày muốn được tiêm (dự kiến)
+          <input type="date" id="date" class="form-control" required placeholder="Ngày/Tháng/Năm">
+        </div>
+        <div class="col-lg-6">
+          Buổi tiêm mong muốn
+          <input type="text" id="tg__tiem" class="form-control" placeholder=" Buổi sáng, chiều, cả ngày..." required>
         </div>
       </div>
   
-      <div class="row mt-3">
-        <span class="title-bold">Trong vòng 14 ngày qua Anh/Chị có tiếp xúc với:</span>
-        <div class="col mt-3">
-          <table class="table">
-            <thead class="table-light">
-              <td></td>
-              <td>Có</td>
-              <td>Không</td>
-            </thead>
-            <tbody>
-              <td>Người bệnh hoặc nghi ngờ mắc bệnh COVID-19</td>
-              <td>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN3">
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Có
-                  </label>
-                </div>
-              </td>
-              <td>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN3" checked>
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Không
-                  </label>
-                </div>
-              </td>
-            </tbody>
-            <tbody>
-              <td>Người từ nước có bệnh COVID-19</td>
-              <td>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN4">
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Có
-                  </label>
-                </div>
-              </td>
-              <td>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN4" checked>
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Không
-                  </label>
-                </div>
-              </td>
-            </tbody>
-            <tbody>
-              <td>Người có biểu hiện (Sốt, ho, khó thở, Viêm phổi)
-              <td>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN5">
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Có
-                  </label>
-                </div>
-              </td>
-              <td>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN5" checked>
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Không
-                  </label>
-                </div>
-              </td>
-            </tbody>
-          </table>
-        </div>
-      </div>
-  
-      <div class="title-b mt-3">
+
+      <div class="title-b mt-5">
         <span>
           Dữ liệu bạn cung cấp hoàn toàn bảo mật và chỉ phục vụ cho việc phòng chống dịch, thuộc quyền quản lý của Ban chỉ đạo quốc gia về phòng chống dịch Covid-19
         </span>
@@ -258,5 +195,4 @@
     </form>
   </div>
 </body>
-  <script src="javascript/form1.js"></script>
 </html>

@@ -226,14 +226,36 @@ nav {
 .avatar__wrap {
   position: absolute;
   top: 62px;
-  right: 8px;
+  right: 20px;
   background: #fff;
-  padding: 15px;
   border-radius: 5px;
   transition: 0.4s;
 }
 
+.avatar__item {
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.avatar__item:first-child{
+  padding-top: 10px;
+}
+
+.avatar__item:last-child {
+  padding-bottom: 10px;
+}
+
+.avatar__wrap .avatar__item:hover {
+  background-color: #ccc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 .avatar__wrap a {
+  width: 100%;
+  padding: 15px;
   text-decoration: none;
   color: #000;
 }
@@ -297,3 +319,4 @@ nav {
 .error {
   background-color: #e74c3c;
 }
+
