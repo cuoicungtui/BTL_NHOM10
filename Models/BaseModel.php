@@ -1,4 +1,7 @@
 <?php
+
+use JetBrains\PhpStorm\Internal\ReturnTypeContract;
+
 class BaseModel extends Database
 {
     protected $connect;
@@ -98,6 +101,7 @@ class BaseModel extends Database
 
         $sql = "INSERT INTO ${table}(${columns}) VALUES (${stringvalues})";
         return $this-> _query($sql);
+        // return $sql;
 
     }
 
@@ -122,8 +126,8 @@ class BaseModel extends Database
 
         $sql = "UPDATE ${table} SET ${datasetString} WHERE ${conditionsetString}";
 
-        return $this->_query($sql);
-     
+       return $this->_query($sql);
+      
     }
 
 

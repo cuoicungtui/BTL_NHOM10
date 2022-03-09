@@ -1,7 +1,6 @@
 <?php
-session_start();
     if(!isset($_SESSION['Admin']))
-        header("location:/BTL_NHOM10/Views/admin/");
+        header("location:/BTL_NHOM10/admin/");
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +29,7 @@ session_start();
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/BTL_NHOM10/Views/admin/">Home</a>
+                            <a class="nav-link active" aria-current="page" href="/BTL_NHOM10/?controller=admin&acction=loadViewAdmin">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/BTL_NHOM10/?controller=admin&acction=loadViewAccout">Admin</a>

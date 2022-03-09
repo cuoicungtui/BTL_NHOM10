@@ -1,62 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Khai báo y tế</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container-fluid">
-      <a href="index.html" class="header__logo">
-        <img src="./img/logo.png" alt="" class="image">
-        <div class="header__title">
-          <span>SỨC KHỎE MÙA DỊCH</span>
-        </div>
-      </a>
-      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon">
-          <i class='bx bxs-grid'></i>
-        </span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Khai báo y tế</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Đăng ký tiêm</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Tra cứu
-            </a>
-            <ul class="dropdown-menu mb-3" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Tra cứu chứng nhận tiêm</a></li>
-              <li><a class="dropdown-item" href="#">Tra cứu kết quả đăng ký</a></li>
-            </ul>
-          </li>
-          <li class="nav-item nav__avatar">
-            <img class="nav__img" src="img/no-avatar.png" alt="">
-          </li>
-          <div class="avatar__wrap hide">
-            <div class="avatar__item"><a class="" href="#">Trang cá nhân</a></div>
-            <div class="avatar__item"><a class="" href="#">Đăng nhập</a></div>
-            <div class="avatar__item"><a class="" href="#">Đăng xuất</a></div>
-            
-          </div>
-        </ul>
-      </div>
-    </div>
-  </nav>
+
+<?php
+  if(!isset($_SESSION['User'])){
+    header('location:/BTL_NHOM10/?controller=user&acction=index');
+  }
+
+?>
+
+<?php
+  require "./Views/header.php";
+?>
+
+
 
   <div class="container">
-    <form>
+    <form action="/BTL_NHOM10/?controller=declare&acction=form1Submit" method="Post">
       <div class="row">
         <div class="title">
           <h3>THÔNG TIN KHAI BÁO Y TẾ</h3>
@@ -65,12 +22,12 @@
         </div>
         <div class="col-lg-6">
           Họ và tên
-          <input type="text" id="name" class="form-control" required placeholder="Họ và tên">
+          <input type="text" id="name" class="form-control" name="name" value="<?php echo $data[0]['Name'] ?>" required placeholder="Họ và tên">
           <span id="loiten"></span>
         </div>
         <div class="col-lg-6">
           Số hộ chiếu / CMND / CCCD
-          <input type="text" id="cccd" class="form-control" required placeholder="Số hộ chiếu / CMND / CCCD">
+          <input type="text" id="cccd" class="form-control" name="CCCD" value="<?php echo $data[0]['CCCD'] ?>" required placeholder="Số hộ chiếu / CMND / CCCD">
           <span id="loi_cccd"></span>
         </div>
       </div>
@@ -78,7 +35,7 @@
       <div class="row mt-3 mb-3">
         <div class="col-sm-6 col-lg-4">
           <span>Năm sinh</span>
-          <input type="date" id="years" class="form-control" required placeholder="Năm sinh">
+          <input type="date" id="years" class="form-control" name="NS" value="<?php echo $data[0]['birthday'] ?>" required placeholder="Năm sinh">
           <span></span>
         </div>
         <div class="col-sm-6 col-lg-4">
@@ -110,12 +67,12 @@
       <div class="row mt-3">
         <div class="col-sm-6 col-lg-4">
           Tỉnh/Thành phố
-          <input type="text" class="form-control" id="tinh" required placeholder="Tỉnh/Thành phố">
+          <input type="text" class="form-control" id="tinh" name="city/province" value="<?php echo $data[0]['city_province'] ?>" required placeholder="Tỉnh/Thành phố">
           <span></span>
         </div>
         <div class="col-sm-6 col-lg-4">
           Quận/huyện
-          <input type="text" class="form-control" id="huyen" required placeholder="Quận/huyện">
+          <input type="text" class="form-control" id="huyen" name="District" value="<?php echo $data[0]['District'] ?>" required placeholder="Quận/huyện">
           <span></span>
         </div>
         <div class="col-sm-6 col-lg-4">
@@ -136,12 +93,12 @@
       <div class="row mt-3">
         <div class="col-xs-12 col-lg-6">
           Số điện thoại
-          <input type="number" id="sdt" class="form-control" required placeholder="Số điện thoại">
+          <input type="number" id="sdt" class="form-control" name="SDT" value="<?php echo $data[0]['SDT'] ?>" required placeholder="Số điện thoại">
           <span id="loi_sdt"></span>
         </div>
         <div class="col-xs-12 col-lg-6">
           Email
-          <input type="email" ìd="email" class="form-control" required placeholder="Email">
+          <input type="email" ìd="email" class="form-control" value="<?php echo $data[0]['Email'] ?>" required placeholder="Email" readonly >
           <span></span>
         </div>
       </div>
@@ -150,11 +107,11 @@
         <div class="col">
           <span class="title-bold">Trong vòng 14 ngày qua, Anh/Chị có đến tỉnh/thành phố, quốc gia/vùng lãnh thổ nào (Có thể đi qua nhiều nơi)</span>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="checkYN1" id="" value="option1" checked>
+            <input class="form-check-input" type="radio" name="checkYN1" id="" value="1" checked>
             <label class="form-check-label" for="inlineRadio1">Không</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="checkYN1" id="" value="option2">
+            <input class="form-check-input" type="radio" name="checkYN1" id="" value="0">
             <label class="form-check-label" for="inlineRadio2">Có</label>
           </div>
         </div>
@@ -164,11 +121,11 @@
         <div class="col">
           <span class="title-bold">Trong vòng 14 ngày qua, Anh/Chị có thấy xuất hiện ít nhất 1 trong các dấu hiệu: sốt, ho, khó thở, viêm phổi, đau họng, mệt mỏi không?</span>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="checkYN2" id="" value="option1" checked>
+            <input class="form-check-input" type="radio" name="checkYN2" id="" value="1" checked>
             <label class="form-check-label" for="inlineRadio1">Không</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="checkYN2" id="" value="option2">
+            <input class="form-check-input" type="radio" name="checkYN2" id="" value="0">
             <label class="form-check-label" for="inlineRadio2">Có</label>
           </div>
         </div>
@@ -187,7 +144,7 @@
               <td>Người bệnh hoặc nghi ngờ mắc bệnh COVID-19</td>
               <td>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN3">
+                  <input class="form-check-input" type="radio" name="checkYN3" value="1">
                   <label class="form-check-label" for="flexRadioDefault1">
                     Có
                   </label>
@@ -195,7 +152,7 @@
               </td>
               <td>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN3" checked>
+                  <input class="form-check-input" type="radio" name="checkYN3" value="0" checked>
                   <label class="form-check-label" for="flexRadioDefault1">
                     Không
                   </label>
@@ -206,7 +163,7 @@
               <td>Người từ nước có bệnh COVID-19</td>
               <td>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN4">
+                  <input class="form-check-input" type="radio" name="checkYN4" value="1">
                   <label class="form-check-label" for="flexRadioDefault1">
                     Có
                   </label>
@@ -214,7 +171,7 @@
               </td>
               <td>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN4" checked>
+                  <input class="form-check-input" type="radio" name="checkYN4" value="0" checked>
                   <label class="form-check-label" for="flexRadioDefault1">
                     Không
                   </label>
@@ -225,7 +182,7 @@
               <td>Người có biểu hiện (Sốt, ho, khó thở, Viêm phổi)
               <td>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN5">
+                  <input class="form-check-input" type="radio" name="checkYN5" value="1">
                   <label class="form-check-label" for="flexRadioDefault1">
                     Có
                   </label>
@@ -233,7 +190,7 @@
               </td>
               <td>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="checkYN5" checked>
+                  <input class="form-check-input" type="radio" name="checkYN5" checked value="0">
                   <label class="form-check-label" for="flexRadioDefault1">
                     Không
                   </label>
@@ -257,6 +214,7 @@
 
     </form>
   </div>
-</body>
-  <script src="javascript/form1.js"></script>
-</html>
+  <?php
+  require "./Views/footer.php";
+
+  ?>

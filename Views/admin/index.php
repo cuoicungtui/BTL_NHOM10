@@ -1,10 +1,10 @@
 <?php
-    include_once "./header.php";
+include_once "Views/admin/header.php";
 ?>
 
 
 
 
 <?php
-    include_once "./footer.php";
+include_once "Views/admin/footer.php";
 ?>

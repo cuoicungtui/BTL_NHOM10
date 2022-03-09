@@ -1,8 +1,8 @@
 <?php
 
-class UserModel extends BaseModel
+class VaccineModel extends BaseModel
 { 
-    const TABLE = "user";
+    const TABLE = "vaccine";
 
     public function getAll($select = ['*'], $orderby = [],$limit= 200 ){
 
@@ -16,6 +16,7 @@ class UserModel extends BaseModel
         return $this->find(self::TABLE,$select,$condition);
         
     }
+
 
     public function insert($data = []){
 
@@ -34,5 +35,4 @@ class UserModel extends BaseModel
         return $this->delete(self::TABLE,$condition);
 
     }
-    
 }

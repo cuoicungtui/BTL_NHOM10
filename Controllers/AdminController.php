@@ -96,6 +96,17 @@ class AdminController extends BaseController
         $this->view("admin.accoutView", $data);
     }
 
+    public function loadViewAdmin()
+    {
+        // $this->loadModel('AdminModel');
+
+        // $AdminModel = new AdminModel;
+
+        // $data = $AdminModel->getAll();
+
+        $this->view("admin.index");
+    }
+
     public function login()
     {
 
@@ -112,20 +123,19 @@ class AdminController extends BaseController
         if (empty($data))
             header('location:admin/?err');
         else {
+   
+            if (password_verify($password, $data[0]['password'])) {  
 
-            if (password_verify($password, $data[0]['password'])) {
-
-                session_start();
                 $_SESSION['Admin'] = $username;
-                header("location:/BTL_NHOM10/Views/admin/");
+                $this->view('admin.index');
             }else
-                header('location:admin/?err=1');
+                 header('location:admin/?err=1');
         }
     }
 
     public function logout()
     {
-        session_start();
+
         if (isset($_SESSION['Admin'])) {
             unset($_SESSION['Admin']);
             header("location:/BTL_NHOM10/admin/");

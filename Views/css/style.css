@@ -165,6 +165,7 @@ nav {
 
 
 .category-left {
+  text-decoration: none;
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -178,12 +179,16 @@ nav {
   max-width: 220px;
 }
 
+
+
 .category-right {
   cursor: pointer;
   box-shadow: -4px 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin-bottom: 10px;
   padding: 0 10px 10px 0;
+  text-decoration: none ;
+  color: #000;
 }
 
 .category-right span,

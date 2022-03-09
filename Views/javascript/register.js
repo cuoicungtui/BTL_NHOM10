@@ -1,5 +1,5 @@
 const form = document.querySelector('form')
-const username = document.getElementById('username')
+// const username = document.getElementById('username')
 const email = document.getElementById('email')
 const password = document.getElementById('password')
 const password2 = document.getElementById('password2')
@@ -71,19 +71,21 @@ function checkMatchPasswordError(passwordInput, cfpasswordInput) {
 	return false
 }
 
-form.addEventListener('submit', function(e){
-	e.preventDefault()
+   function Kt(){
+	
+	
 
-
-	let isEmptyError = checkEmptyError([username, email, password, password2])
+	let isEmptyError = checkEmptyError([email, password, password2])
 	let isEmailError = checkEmailError(email)
-	let isLengthError = checkLengthError(username, 3, 10)
-	let isPasswordLengthError = checkLengthError(username, 3, 10)
+	// // let isLengthError = checkLengthError(username, 3,30)
+	let isPasswordLengthError = checkLengthError(password, 3, 30)
 	let ischeckMatchPasswordError = checkMatchPasswordError(password, password2)
 
-	if(isEmptyError || isEmailError || isLengthError || isPasswordLengthError || ischeckMatchPasswordError){
-		// do nothing
+	if(isEmptyError || isEmailError || isPasswordLengthError || ischeckMatchPasswordError){
+		alert("sai")
+		return false
+		
 	}else {
-		//logic, call API
+	
 	}
-})
+}
