@@ -11,11 +11,11 @@ class Database{
 
     public function connect(){
 
-        $connect  = mysqli_connect(self:: HOST,self::USERNAME,self::PASSWORD,self::DB_NAME);
+        $this->connect  = mysqli_connect(self:: HOST,self::USERNAME,self::PASSWORD,self::DB_NAME);
 
-        //mysqli_set_charset($this->connect,'utf8');
+        mysqli_set_charset($this->connect,"utf8");
         if(mysqli_connect_errno() ==0){
-            return $connect;
+            return $this->connect;
         }
     }
 }
