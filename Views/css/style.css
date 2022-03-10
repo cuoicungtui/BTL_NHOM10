@@ -157,10 +157,24 @@ nav {
     position: unset !important;
   }
 
-  .category-right {
-    /* border-left: 1px solid transparent; */
-    /* padding-left: 0px; */
+  .category-left img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+  }
 }
+
+@media screen and (max-width: 767.98px) {
+  .category-leftR h5{
+    font-size: 13px;
+  }
+
+  .category-leftR span{
+    font-size: 11px;
+    line-height: 13px;
+    height: 50px;
+  }
+  
 }
 
 
@@ -178,8 +192,6 @@ nav {
 .category-left img {
   max-width: 220px;
 }
-
-
 
 .category-right {
   cursor: pointer;

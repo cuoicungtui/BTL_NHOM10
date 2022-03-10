@@ -27,7 +27,7 @@ require "./Views/header.php";
       ?>
         <a class="category-left" href="/BTL_NHOM10/?controller=post&acction=details&id=<?php echo $data[$i]['id']  ?>" style="text-decoration: none ;">
           <img src="<?php echo $data[$i]['img']  ?>" alt="" >
-          <div style=" padding-left: 10px" class="title1">
+          <div class="category-leftR" style=" padding-left: 10px" class="title1">
             <h5 style="color: #000;"><?php echo $data[$i]['Title']  ?></h5>
             <span style="color: #000;"><?php echo $data[$i]['paragraph']  ?></span>
           </div>
@@ -43,9 +43,9 @@ require "./Views/header.php";
     <?php
       for ($i; $i < count($data); $i++) {
       ?>
-        <a class="category-left" href="/BTL_NHOM10/?controller=post&acction=details&id=<?php echo $data[$i]['id']  ?>" style="text-decoration: none ;">
+        <a class="category-left mb-5 mt-3" href="/BTL_NHOM10/?controller=post&acction=details&id=<?php echo $data[$i]['id']  ?>" style="text-decoration: none ;">
           <img src="<?php echo $data[$i]['img']  ?>" alt="">
-          <div style=" padding-left: 10px">
+          <div class="category-leftR" style=" padding-left: 10px">
             <h5 style="color: #000;"><?php echo $data[$i]['Title']  ?></h5>
             <span style="color: #000;"><?php echo $data[$i]['paragraph']  ?></span>
           </div>
