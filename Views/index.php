@@ -10,7 +10,7 @@ require "./Views/header.php";
 
   <div class="row">
     <div class="col-lg-12 new__wrap">
-      <a href="/" class="new">
+      <a href="#" class="new">
         <img src="https://www.thegioimaychu.vn/blog/wp-content/uploads/2021/07/TheGioiMayChu-Blog-Image.jpg" alt="">
         <span>Vì sao chưa thể bỏ khái niệm F0, F1?</span>
       </a>

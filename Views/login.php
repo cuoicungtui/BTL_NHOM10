@@ -14,11 +14,28 @@
         <div class="form-control">
           <input type="email" id="email" name="email" placeholder="Email" required />
           <span></span>
-          <small></small>
+          <?php
+           if(isset($err)){
+
+              if($err==1)
+                  echo  '<small> Email does not exist </small>';
+           }
+          
+          ?>
+         
+          
         </div>
         <div class="form-control">
           <input type="password" id="password" name="password" placeholder="Mật khẩu" required/>
           <span></span>
+          <?php
+           if(isset($err)){
+
+              if($err==2)
+                  echo  '<small> Incorrect password </small>';
+           }
+          
+          ?>
           <small></small>
         </div>
         <input type="submit" value="Đăng Nhập" />

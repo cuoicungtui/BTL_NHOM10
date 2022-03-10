@@ -30,21 +30,25 @@ class UserController extends BaseController
         $UserModel = new UserModel;
 
         $data = $UserModel->findData(['id_user', 'Email', 'Password'], ['Email' => $email]);
-
-        if (password_verify($password, $data[0]['Password'])) {
-
-            
-            $_SESSION['User'] = $data[0]['id_user'];
-            $this->loadModel('PostModel');
-            $PostModel = new PostModel;
-
-            $data = $PostModel->getAll(['*'], ['column' => 'date', 'oder' => 'desc']);
-
-            return $this->view('index', $data);
-
+        if (count($data) == 0) {
+            $err = ['err'=>1];
+            $this->view('login',$err);
         } else {
 
-            $this->view('login');
+            if (password_verify($password, $data[0]['Password'])) {
+
+
+                $_SESSION['User'] = $data[0]['id_user'];
+                $this->loadModel('PostModel');
+                $PostModel = new PostModel;
+
+                $data = $PostModel->getAll(['*'], ['column' => 'date', 'oder' => 'desc']);
+
+                return $this->view('index', $data);
+            } else {
+                $err = ['err'=>2];
+                $this->view('login',$err);
+            }
         }
     }
 
@@ -60,7 +64,6 @@ class UserController extends BaseController
             $data = $PostModel->getAll(['*'], ['column' => 'date', 'oder' => 'desc']);
 
             return $this->view('index', $data);
-         
         }
     }
 
@@ -95,9 +98,9 @@ class UserController extends BaseController
 
         $UserModel = new UserModel;
 
-        $data = $UserModel->findData(['*'],['id_user' => $_SESSION['User']]);
+        $data = $UserModel->findData(['*'], ['id_user' => $_SESSION['User']]);
 
-        $this->view("User.user",$data);
+        $this->view("User.user", $data);
     }
 
 
@@ -108,32 +111,50 @@ class UserController extends BaseController
 
         $target_dir = "Views/img/";
         $target_file = $target_dir . basename($_FILES["AVT"]["name"]);
-        if($_FILES['AVT']['size']>0){
+        if ($_FILES['AVT']['size'] > 0) {
 
             move_uploaded_file($_FILES["AVT"]["tmp_name"], $target_file);
         }
-        $data = [
-            'Name' => $_POST['name'],
-            'SDT' =>$_POST['SDT'],
-            'birthday'=>$_POST['NS'],
-            'CCCD'=>$_POST['CCCD'],
-            'BHYT_number'=>$_POST['BHYT'],
-            'city_province'=>$_POST['city/province'],
-            'District'=>$_POST['District'],
-            'sex'=>$_POST['inlineRadioOptions'],
-            'Avatar'=>$target_file
-        ];
+
+
+        if ($target_dir == $target_file) {
+
+            $data = [
+                'Name' => $_POST['name'],
+                'SDT' => $_POST['SDT'],
+                'birthday' => $_POST['NS'],
+                'CCCD' => $_POST['CCCD'],
+                'BHYT_number' => $_POST['BHYT'],
+                'city_province' => $_POST['city/province'],
+                'District' => $_POST['District'],
+                'sex' => $_POST['inlineRadioOptions'],
+            ];
+        } else {
+
+
+            $data = [
+                'Name' => $_POST['name'],
+                'SDT' => $_POST['SDT'],
+                'birthday' => $_POST['NS'],
+                'CCCD' => $_POST['CCCD'],
+                'BHYT_number' => $_POST['BHYT'],
+                'city_province' => $_POST['city/province'],
+                'District' => $_POST['District'],
+                'sex' => $_POST['inlineRadioOptions'],
+                'Avatar' => $target_file
+            ];
+        }
         $Condition = [
             'id_user' => $_SESSION['User']
         ];
 
-       // echo var_dump($Condition);
-        
-        $UserModel->updateData($data,$Condition);
-       
-        $data = $UserModel->findData(['*'],['id_user' => $_SESSION['User']]);
+        // echo var_dump($Condition);
 
-        $this->view("User.user",$data);
+        $UserModel->updateData($data, $Condition);
+
+        $data = $UserModel->findData(['*'], ['id_user' => $_SESSION['User']]);
+
+        $this->view("User.user", $data);
     }
 
     // public function form1View(){
@@ -145,24 +166,25 @@ class UserController extends BaseController
     //     $Condition = [
     //         'id_user' => $_SESSION['User']
     //     ];
-   
+
     //     $data = $UserModel->findData(['*'],['id_user' => $_SESSION['User']]);
 
     //     $this->view('form1',$data);
     // }
 
 
-   
 
 
 
 
 
 
-    
-    public function form2View(){
 
-        
+
+    public function form2View()
+    {
+
+
         $this->loadModel('UserModel');
 
         $UserModel = new UserModel;
@@ -170,12 +192,9 @@ class UserController extends BaseController
         $Condition = [
             'id_user' => $_SESSION['User']
         ];
-   
-        $data = $UserModel->findData(['*'],['id_user' => $_SESSION['User']]);
 
-        $this->view('form2',$data);
+        $data = $UserModel->findData(['*'], ['id_user' => $_SESSION['User']]);
+
+        $this->view('form2', $data);
     }
-
-
- 
 }
