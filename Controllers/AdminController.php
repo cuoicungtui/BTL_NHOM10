@@ -72,19 +72,19 @@ class AdminController extends BaseController
 
     // }
 
-    public function delete()
-    {
-        $this->loadModel('AdminModel');
-        $AdminModel = new AdminModel;
+    // public function delete()
+    // {
+    //     $this->loadModel('AdminModel');
+    //     $AdminModel = new AdminModel;
 
-        $condition = [
-            'name' => 'quoc',
-            'id' => 1
-        ];
+    //     $condition = [
+    //         'name' => 'quoc',
+    //         'id' => 1
+    //     ];
 
 
-        return $AdminModel->deleteData($condition);
-    }
+    //     return $AdminModel->deleteData($condition);
+    // }
     public function loadViewAccout()
     {
         $this->loadModel('AdminModel');

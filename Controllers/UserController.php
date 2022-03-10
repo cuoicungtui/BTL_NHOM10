@@ -174,13 +174,6 @@ class UserController extends BaseController
 
 
 
-
-
-
-
-
-
-
     public function form2View()
     {
 

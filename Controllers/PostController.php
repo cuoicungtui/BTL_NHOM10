@@ -96,7 +96,7 @@ class PostController extends BaseController
     {
 
 
-        $id= $_GET['id'];
+        $id = $_GET['id'];
 
         $this->loadModel('PostModel');
 
@@ -111,7 +111,8 @@ class PostController extends BaseController
         $this->view('admin.PostEditView', $data);
     }
 
-    public function editPost(){
+    public function editPost()
+    {
 
         $id = $_POST['id'];
         $Title = $_POST['Title'];
@@ -122,68 +123,65 @@ class PostController extends BaseController
         if ($_FILES["file_img"]['size'] > 0) {
             move_uploaded_file($_FILES['file_img']['tmp_name'], $target_file);
 
-            $data=[
-                'Title'=>$Title,
-                'img'=>$target_file,
-                'paragraph'=>$p,
-                'date'=>$date
+            $data = [
+                'Title' => $Title,
+                'img' => $target_file,
+                'paragraph' => $p,
+                'date' => $date
             ];
-
         } else {
-            $data=[
-                'Title'=>$Title,
-                'paragraph'=>$p,
-                'date'=>$date
+            $data = [
+                'Title' => $Title,
+                'paragraph' => $p,
+                'date' => $date
             ];
         }
 
         $condition = [
 
-            'id'=>$id
+            'id' => $id
 
         ];
 
         $this->loadModel('PostModel');
         $PostModel = new PostModel;
-        
-        $PostModel->updateData($data,$condition);
+
+        $PostModel->updateData($data, $condition);
 
         $data = $PostModel->getAll();
 
         $this->view('admin.postView', $data);
-
     }
 
-    public function details(){
+    public function details()
+    {
 
-       $id = $_GET['id'];
+        $id = $_GET['id'];
 
-       $condition = [
-        'id' => $id
-    ];
+        $condition = [
+            'id' => $id
+        ];
 
-    $this->loadModel('PostModel');
+        $this->loadModel('PostModel');
 
-    $PostModel = new PostModel;
+        $PostModel = new PostModel;
 
-    $Title = $PostModel->findData(['*'], $condition);
-
-
-    $this->loadModel('ContenModel');
-
-    $ContenModel = new ContenModel;
+        $Title = $PostModel->findData(['*'], $condition);
 
 
-    $oderby = [
-        'column' => 'index_conten',
-        'oder' => 'ASC'
-    ];
+        $this->loadModel('ContenModel');
 
-    $content = $ContenModel->findDataOder(['*'], $oderby, $condition);
+        $ContenModel = new ContenModel;
 
-    $data = [$Title,$content];
-    $this->view('details', $data);
 
+        $oderby = [
+            'column' => 'index_conten',
+            'oder' => 'ASC'
+        ];
+
+        $content = $ContenModel->findDataOder(['*'], $oderby, $condition);
+
+        $data = [$Title, $content];
+        $this->view('details', $data);
     }
-
 }
