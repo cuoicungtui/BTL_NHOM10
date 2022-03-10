@@ -3,7 +3,7 @@
 class VaccineController extends BaseController
 {
     
-    public function form2View(){
+        public function form2View(){
 
         $this->loadModel('UserModel');
 
@@ -13,7 +13,7 @@ class VaccineController extends BaseController
         $data = $UserModel->findData(['*'],['id_user' => $_SESSION['User']]);
 
         $this->view('form2',$data);
-    }
+        }
 
         public function form2Submit(){
 
@@ -63,6 +63,76 @@ class VaccineController extends BaseController
             return $this->view('index', $data);
 
         }
+
+        public function userInformation(){
+
+            $id_user = $_SESSION['User'];
+
+            $dataUser = [];
+
+            $this->loadModel('UserModel');
+
+            $UserModel = new UserModel;
+    
+       
+            $dataUser = $UserModel->findData(['*'],['id_user' => $_SESSION['User']]);
+    
+            // $this->view('form2',$data);
+
+            echo json_encode( $dataUser[0]);
+
+
+        }
+
+        public function vaccineNumber()
+        {
+            $id_user = $_SESSION['User'];
+
+            $dataUser = [];
+
+            $this->loadModel('VaccineModel');
+
+            $VaccineModel = new VaccineModel;
+            
+            $oderby= [
+                'column'=>'numberVaccine',
+                'oder'=>'desc'
+
+            ];
+       
+            $dataVaccine = $VaccineModel->findDataOder(['*'],$oderby,['id_user'=> $id_user,'check_'=>1]);
+
+    
+            // $this->view('form2',$data);
+
+            echo json_encode( $dataVaccine[0]); 
+        }
+
+        public function registrationList(){
+            $id_user = $_SESSION['User'];
+
+            $dataUser = [];
+
+            $this->loadModel('VaccineModel');
+
+            $VaccineModel = new VaccineModel;
+            
+            $oderby= [
+                'column'=>'id',
+                'oder'=>'desc'
+
+            ];
+       
+            $List = $VaccineModel->findDataOder(['*'],$oderby,['id_user'=> $id_user]);
+
+    
+            // $this->view('form2',$data);
+
+            echo json_encode( $List); 
+
+        }
+
+
 
     
     

@@ -16,6 +16,12 @@ class VaccineModel extends BaseModel
         return $this->find(self::TABLE,$select,$condition);
         
     }
+    public function findDataOder($select = ['*'] ,$orderby = [],$condition = [])
+    {
+
+        return $this->findOder(self::TABLE,$select,$orderby,$condition);
+        
+    }
 
 
     public function insert($data = []){

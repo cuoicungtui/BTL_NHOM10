@@ -82,7 +82,7 @@ function checkMatchPasswordError(passwordInput, cfpasswordInput) {
 	let ischeckMatchPasswordError = checkMatchPasswordError(password, password2)
 
 	if(isEmptyError || isEmailError || isPasswordLengthError || ischeckMatchPasswordError){
-		alert("sai")
+
 		return false
 		
 	}else {

@@ -160,6 +160,12 @@ class AdminController extends BaseController
         $this->view("admin.accoutView", $data);
     }
 
+    public function addAdminView(){
+
+        $this->view("admin.accoutAddView");
+
+    }
+
     public function add_admin()
     {
 

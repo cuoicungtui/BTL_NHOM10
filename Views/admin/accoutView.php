@@ -11,7 +11,7 @@ include_once "Views/admin/header.php";
 
     </div>
 
-    <a class="btn btn-dark mt-5" href="/BTL_NHOM10/Views/admin/accoutAddView.php" role="button">Add accout</a>
+    <a class="btn btn-dark mt-5" href="/BTL_NHOM10/?controller=admin&acction=addAdminView" role="button">Add accout</a>
     <thead>
         
         <tr>

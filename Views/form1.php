@@ -1,7 +1,7 @@
 
 <?php
   if(!isset($_SESSION['User'])){
-    header('location:/BTL_NHOM10/?controller=user&acction=index');
+    header('location:/BTL_NHOM10/?controller=user&acction=loginView');
   }
 
 ?>
