@@ -50,7 +50,7 @@ require "./Views/header.php";
 </div>
 <div class="container mb-5">
   <div class="arrow" style="display: flex; justify-content: end;">
-    <a style="text-decoration: none; margin-right: 20px;" href="index.html">
+    <a style="text-decoration: none; margin-right: 20px;" href="/BTL_NHOM10/">
       <i class="bx bxs-left-arrow-circle" style="font-size: 45px; color:#24a8d8"></i>
     </a>
     <a style="text-decoration: none;" href="#">

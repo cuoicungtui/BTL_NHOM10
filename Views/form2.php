@@ -23,7 +23,6 @@
         <div class="row">
           <div class="col-4">
             <select class="form-select" name="Number_vaccine" aria-label="Default select example">
-              <option selected>Đăng ký tiêm mũi thứ</option>
               <option value="1">Mũi tiêm thứ nhất</option>
               <option value="2">Mũi tiêm thứ hai</option>
               <option value="3">Mũi tiêm thứ ba</option>

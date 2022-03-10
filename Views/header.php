@@ -223,16 +223,18 @@
                     <div class="date2"><?php echo strrev(substr($value['dateVaccine'],0,7))    ?></div>
                   <?php
                   if($value['check_']=='1')
-                      echo  '<div class="check-active ">Thành công</div>';
+                      echo  '<div style="background-color:rgb(41 199 42 / 93%);" class="check-active ">Thành công</div>';
                   else{
                       if(strtotime($value['endDate']) >= strtotime("Now"))
                         echo  '<div class="check-active">Chưa duyệt</div>';
                       else
-                        echo  '<div class="check-active ">Hêt han</div>';
+                      echo '<div style="width: 115px;background-color:#ad9d8e99;" class="check-active ">Hết hạn</div>';
+                       
                   } 
-
-                  ?>  
                   
+  
+                  ?>  
+                     
                   </div>
                   <div class="form-right">
                     <div class="form__right-title">

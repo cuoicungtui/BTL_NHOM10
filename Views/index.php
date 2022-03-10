@@ -23,7 +23,7 @@ require "./Views/header.php";
 
 
       <?php
-      for ($i = 0; $i < (count($data) * 3/5); $i++) {
+      for ($i = 0; $i < (count($data) * 4/7); $i++) {
       ?>
         <a class="category-left" href="/BTL_NHOM10/?controller=post&acction=details&id=<?php echo $data[$i]['id']  ?>" style="text-decoration: none ;">
           <img src="<?php echo $data[$i]['img']  ?>" alt="" >

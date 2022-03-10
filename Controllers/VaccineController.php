@@ -43,6 +43,7 @@ class VaccineController extends BaseController
                 'numberVaccine'=>$_POST['Number_vaccine'],
                 'startDate'=>$_POST['date_start'],
                 'endDate'=>$_POST['date_end'],
+                'dateVaccine'=>$_POST['date_end'],
                 'check_'=>0,
                 'queues'=>1,
                 'idVaccine'=>1
