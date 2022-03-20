@@ -35,20 +35,16 @@
                             <a class="nav-link" href="/BTL_NHOM10/?controller=admin&acction=loadViewAccout">Admin</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/BTL_NHOM10/?controller=User&acction=UserAdminView">User</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/BTL_NHOM10/?controller=post&acction=loadPostView">Post</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Vaccine
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Post</a></li>
-                                <li><a class="dropdown-item" href="#">Content</a></li>
-                                <!-- <li>
-                                    <hr class="dropdown-divider">
-                                </li> -->
-                                <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/BTL_NHOM10/?controller=Detailvaccine&acction=loadVaccineView">Vaccine</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/BTL_NHOM10/?controller=Managervaccine&acction=loadMgVaccineView">Manager vaccine </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="/BTL_NHOM10/?controller=Admin&acction=logout">Logout</a>

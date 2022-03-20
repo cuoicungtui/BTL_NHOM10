@@ -190,4 +190,14 @@ class UserController extends BaseController
 
         $this->view('form2', $data);
     }
+    public function UserAdminView(){
+
+        $this->loadModel('UserModel');
+        $UserModel =new UserModel;
+
+        $data = $UserModel->getAll();
+
+        $this->view('admin.UserAdminView',$data);
+
+    }
 }

@@ -27,8 +27,8 @@ class VaccineController extends BaseController
             'city_province' => $_POST['city/province'],
             'District' => $_POST['District'],
             'sex' => $_POST['gioitinh'],
-            'BHYT_number' => $_POST['BHYT']
-
+            'BHYT_number' => $_POST['BHYT'],
+            'idVaccine'=>$_POST['Id_vaccine'] 
         ];
         $Condition = [
             'id_user' => $_SESSION['User']
@@ -132,4 +132,6 @@ class VaccineController extends BaseController
 
         echo json_encode($List);
     }
+
+   
 }

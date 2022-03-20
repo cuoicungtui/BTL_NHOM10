@@ -100,6 +100,7 @@ class BaseModel extends Database
         $stringvalues = implode(',',array_values($values));
 
         $sql = "INSERT INTO ${table}(${columns}) VALUES (${stringvalues})";
+
         return $this-> _query($sql);
         // return $sql;
 

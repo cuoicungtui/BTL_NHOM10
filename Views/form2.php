@@ -120,6 +120,14 @@
           <input type="text" class="form-control" id="benhnen" required placeholder="Bệnh nền">
           <span></span>
         </div>
+        <div class="col-6">
+          Chọn vaccine
+            <select class="form-select" name="Id_vaccine" aria-label="Default select example">
+              <option value="1">Sinopharm</option>
+              <option value="2">pfizer</option>
+              <option value="3">Moderna</option>
+            </select>
+          </div>
       </div>
 
       <div class="row mt-3">
