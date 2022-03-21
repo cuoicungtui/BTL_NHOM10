@@ -6,12 +6,12 @@ include_once "Views/admin/header.php";
 
     <div class="container ">
 
-        <h3 class="text-center mt-5">Vaccine</h3>
+        <h3 class="text-center mt-5">Manager Vaccine</h3>
         <table class="table mt-5">
 
     </div>
 
-    <a class="btn btn-dark mt-5" href="/BTL_NHOM10/?controller=Detailvaccine&acction=loadVaccineAdd" role="button">Add Vaccine</a>
+    <a class="btn btn-dark mt-5" href="/BTL_NHOM10/?controller=Managervaccine&acction=loadAddView" role="button">Add Vaccine</a>
     <thead>
 
         <tr>

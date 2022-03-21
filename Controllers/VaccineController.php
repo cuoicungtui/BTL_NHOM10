@@ -24,11 +24,11 @@ class VaccineController extends BaseController
             'SDT' => $_POST['SDT'],
             'birthday' => $_POST['NS'],
             'CCCD' => $_POST['CCCD'],
-            'city_province' => $_POST['city/province'],
-            'District' => $_POST['District'],
+            'city_province' => strtolower($_POST['city/province']) ,
+            'District' => strtolower($_POST['District']) ,
             'sex' => $_POST['gioitinh'],
             'BHYT_number' => $_POST['BHYT'],
-            'idVaccine'=>$_POST['Id_vaccine'] 
+            
         ];
         $Condition = [
             'id_user' => $_SESSION['User']
@@ -38,8 +38,14 @@ class VaccineController extends BaseController
         $UserModel = new UserModel;
         $UserModel->updateData($data, $Condition);
 
+       
+        $this->loadModel('ManagervaccineModel');
+        $managervaccineModel = new ManagervaccineModel;
+        $data1 = $managervaccineModel->findData(['*'],['idVaccine'=>$_POST['Id_vaccine'] , 'address' => strtolower($_POST['city/province'])]);
 
-        $data = [
+        if(empty($data1)){
+
+             $data = [
 
             'id_user' => $_SESSION['User'],
             'numberVaccine' => $_POST['Number_vaccine'],
@@ -48,16 +54,33 @@ class VaccineController extends BaseController
             'dateVaccine' => $_POST['date_end'],
             'check_' => 0,
             'queues' => 1,
-            'idVaccine' => 1
+            'address' => strtolower($_POST['city/province']),
+            'idVaccine'=>$_POST['Id_vaccine'] 
+            ];
 
-        ];
+        }else{
 
+            $data = [
+
+                'id_user' => $_SESSION['User'],
+                'numberVaccine' => $_POST['Number_vaccine'],
+                'startDate' => $_POST['date_start'],
+                'endDate' => $_POST['date_end'],
+                'dateVaccine' => $_POST['date_end'],
+                'check_' => 1,
+                'queues' => 1,
+                'address' => strtolower($_POST['city/province']),
+                'idVaccine'=>$_POST['Id_vaccine'] 
+            ];
+
+            $managervaccineModel->updateData(['number'=> intval($data1['number']) -1],['id'=>$data1['id']]);
+        }
 
         $this->loadModel('VaccineModel');
         $VaccineModel = new VaccineModel;
-        echo  $VaccineModel->insert($data);
+        $VaccineModel->insert($data);
 
-
+             
         $this->loadModel('PostModel');
         $PostModel = new PostModel;
 

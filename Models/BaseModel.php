@@ -33,7 +33,7 @@ class BaseModel extends Database
 
     }
 
-    public function  find($table,$select = ['*'] ,$condition = []){
+    public function  find($table,$select = ['*'] ,$condition = [],$limit= 200){
 
         $conditionset = [];
 
@@ -45,7 +45,7 @@ class BaseModel extends Database
 
         $column = implode(',',$select);
 
-        $sql = "SELECT ${column} FROM ${table} WHERE ${conditionsetString}";
+        $sql = "SELECT ${column} FROM ${table} WHERE ${conditionsetString} LIMIT ${limit}";
 
         $query = $this->_query($sql);
         $data = [];

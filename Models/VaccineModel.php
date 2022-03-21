@@ -4,16 +4,16 @@ class VaccineModel extends BaseModel
 { 
     const TABLE = "vaccine";
 
-    public function getAll($select = ['*'], $orderby = [],$limit= 200 ){
+    public function getAll($select = ['*'], $orderby = [],$limit= 500 ){
 
        return $this->all(self::TABLE,$select,$orderby,$limit);
 
     }
     
-    public function findData($select = ['*'] ,$condition = [])
+    public function findData($select = ['*'] ,$condition = [],$limit= 500)
     {
 
-        return $this->find(self::TABLE,$select,$condition);
+        return $this->find(self::TABLE,$select,$condition,$limit= 500);
         
     }
     public function findDataOder($select = ['*'] ,$orderby = [],$condition = [])

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 09, 2022 lúc 05:18 AM
+-- Thời gian đã tạo: Th3 21, 2022 lúc 11:12 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.12
 
@@ -39,14 +39,9 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 (8, 'cuoicungtui1', '$2y$10$Aftm7C3Zr006X/qxvsykKOZRTiTBMqvV0aXnGP1plhCVz2nWye7dC'),
-(9, 'quoc', '$2y$10$Wmv7yLlRfqa/syx1kPrFsukqVgcTu0rlyVsLHYlOcXqWNYy0rszSG'),
 (10, 'cuoicungtui123', '$2y$10$NCYL3oq1tP80dzPUpAhMT.BfcdWigXio/oxXXD/50L7m8v1sip4/a'),
-(11, '123', '$2y$10$r.zCKENqSIusSorgHeiPWODXdj9faXmKRYPHwaeSrGK3dKsJPEsRW'),
-(12, 'cuoicungtui1231', '$2y$10$C6OlmftqNzwhzQlI11n/ce7ZEP9B3nV3OfNL2igCbtoDbJvst12KK'),
-(13, '123123213', '$2y$10$9rIFsT7jNAQsPPGoHnj4NOOf8pZpNwxjW/lgllG1bQONrTYT7059S'),
 (14, 'admin', '$2y$10$kUv4SjODRS3ne5kaP87Od.FYTfK39D/IwWBltvF0Eenvu5hXOsyLS'),
-(15, '12312', '$2y$10$R8aXsgiUiZ1VIyDxUU9aZe/o4RXnWf4qEZhR72/awTWXMFWTJZAqe'),
-(16, '123131', '$2y$10$ICVI1dkVCQoR85ttqfP2gezc8O2gf6Q8MgqmRJwwZuj6OdhmYm4jW');
+(19, 'cuoicungtui', '$2y$10$nxwl8Wt8Ahp6FnapeQMqU.eloOm8bDGdvmxZtJcHADVjYend7PMCW');
 
 -- --------------------------------------------------------
 
@@ -115,7 +110,6 @@ CREATE TABLE `detailvaccine` (
   `idVaccine` int(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `made` varchar(100) NOT NULL,
-  `effect` int(11) NOT NULL,
   `startAge` int(11) NOT NULL,
   `endAge` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -124,8 +118,10 @@ CREATE TABLE `detailvaccine` (
 -- Đang đổ dữ liệu cho bảng `detailvaccine`
 --
 
-INSERT INTO `detailvaccine` (`idVaccine`, `name`, `made`, `effect`, `startAge`, `endAge`) VALUES
-(1, 'vaccine1', 'china', 123231, 10, 40);
+INSERT INTO `detailvaccine` (`idVaccine`, `name`, `made`, `startAge`, `endAge`) VALUES
+(1, 'Sinopharm', 'china', 10, 40),
+(2, 'pfizer', 'America', 18, 50),
+(3, 'Moderna', 'America', 20, 70);
 
 -- --------------------------------------------------------
 
@@ -137,9 +133,19 @@ CREATE TABLE `managervaccine` (
   `id` int(11) NOT NULL,
   `idVaccine` int(10) NOT NULL,
   `number` int(11) NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `date` date NOT NULL
+  `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `managervaccine`
+--
+
+INSERT INTO `managervaccine` (`id`, `idVaccine`, `number`, `address`) VALUES
+(1, 2, 400, 'hà nội'),
+(2, 1, 129, 'nghệ an'),
+(3, 2, 620, 'hải phòng'),
+(4, 3, 39, 'hải phòng'),
+(6, 2, 8, 'nghệ an');
 
 -- --------------------------------------------------------
 
@@ -161,11 +167,11 @@ CREATE TABLE `post` (
 
 INSERT INTO `post` (`id`, `Title`, `img`, `paragraph`, `date`) VALUES
 (7, 'Nâng cao ý thức cho học sinh trong phòng, chống dịch Covid-19', 'Views/img/Post1.1.jpg', ' Trong bối cảnh dịch bệnh Covid-19 đang diễn biến phức tạp, để bảo đảm an toàn khi học sinh trở lại trường học tập, ngành GD&ĐT tỉnh Đắk Lắk đã đẩy mạnh truyền thông, giáo dục, nâng cao ý thức vệ sinh cho học sinh. ', '2021-12-30'),
-(8, 'Người Việt lạc quan về sự chấm dứt của dịch Covid-19 nhưng lo lắng về tài chính', 'Views/img/avatar-anime-boy-dep-453x390.jpg', ' Theo khảo sát Manulife Asia Care Survey lần thứ 3 vào tháng 11.2021, hơn 2/3 (69%) cho rằng Covid-19 sẽ biến mất trong vòng một năm tới, với 77% mong đợi các biện pháp hạn chế Covid-19 sẽ dần được dỡ bỏ trong thời gian này. ', '2022-03-18'),
 (9, 'Nguồn về dồi dào, giá kit test COVID-19 hạ nhiệt', 'Views/img/1646748087-7bc2ad9150510661fab60e723e9cb335-width800height578.jpg', 'Giá kit test xét nghiệm nhanh COVID-19 giảm nhẹ mấy ngày gần đây dù chưa có kết quả cuối cùng về việc có đưa mặt hàng này vào diện bình ổn giá hay không. Lý do là nguồn nhập về dồi dào hơn, đỡ căng thẳng cung – cầu.', '2022-03-17'),
 (10, 'Tình hình dịch COVID-19: Cập nhật mới nhất từ Bộ Y tế', 'Views/img/covid-19-tinh-thanh-16303389954381600025668.png', 'SKĐS - Nội dung tình hình dịch COVID-19 dưới đây là số liệu chính thức, mới nhất theo nguồn tin từ Bộ Y tế, cập nhật mỗi buổi tối hàng ngày trên Báo Sức khỏe & Đời sống.', '2022-03-17'),
 (11, ' Cao Bằng: Ca mắc COVID -19 liên tiếp lập đỉnh mới, nhân viên y tế làm xuyên đêm phục vụ F0 khai báo', 'Views/img/94e60a326e50a10ef841-16467384163951373844898.jpg', 'SKĐS - Để giảm tải cho các trạm y tế, nhiều tổ khai báo y tế cộng đồng với sự tham gia của người dân ở Cao Bằng được thành lập để hỗ trợ F0 điều trị tại nhà.', '2022-03-18'),
-(12, ' Cập nhật ca mắc COVID-19 hôm nay ở Hà Nội, tình hình dịch mới nhất', 'Views/img/ca-mac-covid-ha-noi-hom-nay-163099701760139682384-0-0-612-979-crop-1630997027993518735126.jpg', 'SKĐS - Cập nhật mới nhất, liên tục về số ca mắc COVID-19 ở địa bàn thành phố Hà Nội, tình hình tiêm vaccine COVID-19, chi tiết các ca mắc tại 30 quận, huyện, thị xã.\r\nNgày 8/3 Hà Nội phát hiện 32.650 ca COVID-19 mới, trong đó có 13.692 ca cộng đồng.', '2022-03-10');
+(12, ' Cập nhật ca mắc COVID-19 hôm nay ở Hà Nội, tình hình dịch mới nhất', 'Views/img/ca-mac-covid-ha-noi-hom-nay-163099701760139682384-0-0-612-979-crop-1630997027993518735126.jpg', 'SKĐS - Cập nhật mới nhất, liên tục về số ca mắc COVID-19 ở địa bàn thành phố Hà Nội, tình hình tiêm vaccine COVID-19, chi tiết các ca mắc tại 30 quận, huyện, thị xã.\r\nNgày 8/3 Hà Nội phát hiện 32.650 ca COVID-19 mới, trong đó có 13.692 ca cộng đồng.', '2022-03-10'),
+(13, '7 bước giúp chống lại mệt mỏi và suy nhược sau mắc COVID-19', 'Views/img/1646824425-19deade280d674401e1a2794af55f734-width630height420.jpg', 'Sau khi \"chiến đấu\" với COVID-19, mệt mỏi có thể là một triệu chứng kéo dài phổ biến gây khó khăn cho bệnh nhân và thường khiến họ không thể tiếp tục cuộc sống theo cách bình thường…', '2022-03-09');
 
 -- --------------------------------------------------------
 
@@ -194,8 +200,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `Email`, `SDT`, `Password`, `Name`, `BHYT_number`, `birthday`, `city_province`, `District`, `CCCD`, `sex`, `Avatar`, `Job`) VALUES
-(1, 'admin@gmail.com', NULL, '1234567890', NULL, NULL, '2022-03-07', NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'tuondangvuongquoc901@gmail.com', '0988965602', '$2y$10$nsQryoZs/7c.5MmsInQ7nuTd8Yp9CcIz11Gm0mec0ZjwmEUFZaUlK', 'Tưởng đăng vương quốc', '1312321131', '2022-03-10', 'Nghệ an', 'Nam đàn', '187811652', '1', 'Views/img/avatar-anime-boy-dep-453x390.jpg', NULL);
+(1, 'admin@gmail.com', NULL, '1234567890', NULL, NULL, '2001-03-07', NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'tuondangvuongquoc901@gmail.com', '0988965602', '$2y$10$nsQryoZs/7c.5MmsInQ7nuTd8Yp9CcIz11Gm0mec0ZjwmEUFZaUlK', 'Tưởng đăng vương quốc ', '1312321131', '2002-03-10', 'nghệ an', 'nam đàn', '187811652', '1', 'Views/img/avatar-anime-boy-dep-453x390.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -211,6 +217,7 @@ CREATE TABLE `vaccine` (
   `idVaccine` int(11) NOT NULL,
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
+  `address` varchar(50) NOT NULL,
   `check_` char(1) NOT NULL,
   `queues` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -219,15 +226,15 @@ CREATE TABLE `vaccine` (
 -- Đang đổ dữ liệu cho bảng `vaccine`
 --
 
-INSERT INTO `vaccine` (`id`, `id_user`, `dateVaccine`, `numberVaccine`, `idVaccine`, `startDate`, `endDate`, `check_`, `queues`) VALUES
-(2, 2, NULL, 1, 1, '2022-03-18', '2022-03-31', '1', '1'),
-(3, 2, NULL, 2, 1, '2022-03-17', '2022-03-27', '1', '1'),
-(4, 2, NULL, 3, 1, '2022-03-19', '2022-03-31', '1', '1'),
-(5, 1, '2022-03-23 20:11:52', 1, 1, '2022-03-01', '2022-03-18', '0', '0'),
-(6, 1, '2022-03-23 20:11:52', 1, 1, '2022-03-01', '2022-03-18', '1', '0'),
-(7, 2, NULL, 1, 1, '2022-03-18', '2022-03-31', '1', '1'),
-(8, 2, NULL, 3, 1, '2022-03-10', '2022-04-01', '1', '0'),
-(9, 2, NULL, 3, 1, '2022-03-19', '2022-03-31', '0', '1');
+INSERT INTO `vaccine` (`id`, `id_user`, `dateVaccine`, `numberVaccine`, `idVaccine`, `startDate`, `endDate`, `address`, `check_`, `queues`) VALUES
+(2, 2, '2022-03-24 20:49:32', 1, 1, '2022-03-18', '2022-03-31', '', '1', '1'),
+(3, 2, '2022-03-30 20:49:37', 2, 1, '2022-03-17', '2022-03-03', 'nghệ an', '0', '1'),
+(5, 1, '2022-03-23 20:11:52', 1, 1, '2022-03-01', '2022-03-18', '', '0', '0'),
+(6, 1, '2022-03-23 20:11:52', 1, 1, '2022-03-01', '2022-03-18', '', '1', '0'),
+(27, 2, '2022-03-31 00:00:00', 1, 3, '2022-03-14', '2022-03-31', 'hải phòng', '1', '1'),
+(29, 2, '2022-04-08 00:00:00', 3, 2, '2022-03-16', '2022-04-08', 'nghệ an', '1', '1'),
+(30, 2, '2022-04-08 00:00:00', 3, 2, '2022-03-16', '2022-04-08', 'nghệ an', '1', '1'),
+(31, 2, '2022-04-08 00:00:00', 3, 2, '2022-03-16', '2022-04-08', 'nghệ an', '1', '1');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -298,7 +305,7 @@ ALTER TABLE `vaccine`
 -- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `conten`
@@ -316,31 +323,31 @@ ALTER TABLE `declare_`
 -- AUTO_INCREMENT cho bảng `detailvaccine`
 --
 ALTER TABLE `detailvaccine`
-  MODIFY `idVaccine` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idVaccine` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT cho bảng `managervaccine`
 --
 ALTER TABLE `managervaccine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `vaccine`
 --
 ALTER TABLE `vaccine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
